@@ -36,3 +36,14 @@ def hello(request):
         is_new_user = bool(int(new))
 
     return render(request, 'hello.html', context={'is_new_user': is_new_user})
+
+def visitors(request):
+    all_visitors = User.objects.all()
+    visitors_num = all_visitors.count()
+    
+    context = {
+        'all_visitors': all_visitors,
+        'visitors_num': visitors_num
+    }
+
+    return render(request, 'visitors.html', context=context)
