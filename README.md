@@ -7,8 +7,7 @@ If such username already exists you'll still be take to **Hello page** but anoth
 
 **All visitors page** shows usernames of all visitors that signed up
 
-To delete users from list you'll need to go to **admin page** \
-To get to **admin page** add  `/admin` to **home page** url
+To delete users from list you'll need to go to **admin page** 
 
 **To enter _admin page_ you'll need to create _superuser_**\
 Create supeuser by running `py manage.py createsuperuser` in terminal\
