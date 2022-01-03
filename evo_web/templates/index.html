@@ -7,6 +7,11 @@
     {% if next %}
       <input type="hidden" name="next" value="{{ next }}" />
     {% endif %}
+    {% if wrong_password %}
+    <p class="text-danger">
+        Wrong Password
+    </p>
+    {% endif %}
     <div class="form-group">
       <label for="username"> Enter your name</label> 
       <input class="form-control" type="text" name="username">

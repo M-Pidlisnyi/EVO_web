@@ -1,3 +1,4 @@
+import re
 from django.contrib import auth
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -9,23 +10,29 @@ from django.urls.conf import path
 def index(request):
     logout(request)
     username = password = ''
+    wrong_password = False
     if request.method == 'POST':
 
         if request.POST.get('username', False):
             username = request.POST.get('username')
         if request.POST.get('password', False):
             password = request.POST.get('password')
+
         user = authenticate(username=username, password=password)
 
         if user is None:
+            if User.objects.filter(username = username).first():
+                wrong_password = True
+                return render(request, 'index.html', context={'wrong_password': wrong_password})
             user = User.objects.create_user(username=username, password=password)
             user.save()
+            
             login(request, user)
-            return HttpResponseRedirect('hello/?new=1')
+            return redirect('hello/?new=1')
         else:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('hello/?new=0')
+                return redirect('hello/?new=0')
 
     return render(request, 'index.html')
 
