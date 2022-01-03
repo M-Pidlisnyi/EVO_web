@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h5>Hello</h5>
-    <p>We had {{visitors_num}} visitors{{visitors_num|pluralize}} </p>
-    <ul>
+<div class="content">
+    {% if all_visitors %}
+    <p>We had {{visitors_num}} visitor{{visitors_num|pluralize}} </p>
+    <ul class="list-group list-group-flush">
         {% for visitor in all_visitors %}
-            <li>{{ visitor }}</li>
+            <li class="list-group-item">{{ visitor }}</li>
         {% endfor %}
     </ul>
+    {% else %}
+    <p>We've had no visitors yet</p>
+    <p>Go to <a href="{% url 'index' %}">Home page</a> to become our first</p>
+    {% endif %}
+
+</div>
 {% endblock %}

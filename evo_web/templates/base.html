@@ -9,11 +9,15 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" 
           crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    <header class="navbar-brand">Test Task for EVO by Misha Pidlisnyi</header>
     <div class="row">
         <div class='col-sm-2'>
         {% block sidebar %}
+        <div class="sidebar">
             <ul>
                 <li>
                     <a href="{% url 'index' %}">Home</a>
@@ -22,6 +26,7 @@
                     <a href="{% url 'visitors' %}" >Our Visitors</a>
                 </li>
             </ul>
+        </div>
         {% endblock %}
         </div>
         <div class="col-sm-10">
