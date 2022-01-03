@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post" action="/">
+    {% csrf_token %}
+    {% if next %}
+      <input type="hidden" name="next" value="{{ next }}" />
+    {% endif %}
+    <table>
+        <tr>
+          <td>Enter your name</td>
+        </tr>
+          <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+          <td>Enter your password</td>
+        </tr>
+          <td><input type="password" name="password"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Say Hello" />
+  </form>
+{% endblock %}

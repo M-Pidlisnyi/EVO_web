@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if is_new_user %}
+<h5>Hello {{user.username}}</h5>
+{% else %}
+<h5>Already met</h5>
+{% endif %}
+{% endblock %}
